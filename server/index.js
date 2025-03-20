@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import authRouter from "./routes/authRoute.js";
 
 // calls
 dotenv.config();
@@ -23,6 +24,8 @@ if (!PORT || !HOST || !MONGO_URL) {
 app.get("/", (req, res) => {
   res.send("<h1>👋 hello from server");
 });
+
+app.use('/api/auth',authRouter);
 
 // db
 mongoose
